@@ -10,7 +10,7 @@ angular.module('Social')
 		
 		//function to login user
 		$scope.loginUser = function (){
-			$http.post('api/user/login', $scope.login).success(function(data){
+			$http.post('api/auth/login', $scope.login).success(function(data){
 				$rootScope.id = data._id;
 				localStorage.setItem('User-Data', JSON.stringify(data));
 				$scope.login.username = "";

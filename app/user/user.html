@@ -4,11 +4,11 @@
 		<div id="personal" class="row">
 			<div class="col s11">
 				<div class="row">
-					<div class="col s11 m7">
+					<div class="col s11">
 					    <h5 class="header">Personal Information</h5>
 					    <hr class="col s11">
 					</div>
-					<div class="col s11 m7 card hoverable">
+					<div class="col s11 card hoverable">
 					    <div class="card-content">
 				          	<span class="card-title activator grey-text text-darken-4"><i ng-show='editable' class="material-icons right">edit</i></span>
 						    <div class="row">
@@ -17,7 +17,7 @@
 							    </div>
 							    <div class="col s6 card-stacked">
 							        <div class="card-content">							     
-								        <h5>{{userDetails.firstName}} {{userDetails.lastName}}</h5>	
+								        <h4>{{userDetails.firstName}} {{userDetails.lastName}}</h4>	
 								        <dl>
 								          <dt><p>Current organization</p></dt>
 								          <dd><h5>{{userDetails.currentOrganization}}</h5></dd>
@@ -33,32 +33,32 @@
 				          <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
 				            <div class="row">
 				              <div class="col s1"></div>
-				              <form class="col s10">
+				              <form class="col s10" ng-submit="updatePersonal()">
 				                <div class="row">
 				                  <div class="input-field col s5" >
-				                    <input id="firstName" type="text" class="validate">
+				                    <input id="firstName" ng-model="personal.firstName" type="text" class="validate">
 				                    <label for="firstName" style="font-size:14px">First Name</label>
 				                  </div>
 				                  <div class="input-field col s5">
-				                    <input id="lastName" type="text" class="validate">
+				                    <input id="lastName" ng-model="personal.lastName" type="text" class="validate">
 				                    <label for="lastName" style="font-size:14px">Last Name</label>
 				                  </div>
 				                </div>				                
 				                <div class="row">
 				                  <div class="input-field col s10" >
-				                    <input id="currentOrganization" type="text" class="validate">
+				                    <input id="currentOrganization" ng-model="personal.currentOrganization" type="text" class="validate">
 				                    <label for="currentOrganization" style="font-size:14px">Current Organization</label>
 				                  </div>
 				                  <div class="input-field col s10" >
-				                    <input id="currentDesignation" type="text" class="validate">
+				                    <input id="currentDesignation" ng-model="personal.currentDesignation" type="text" class="validate">
 				                    <label for="currentDesignation" style="font-size:14px">Current Designation</label>
 				                  </div>
 				                  <div class="input-field col s10" >
-				                    <input id="email" type="email" class="validate">
+				                    <input id="email" type="email" ng-model="personal.email" class="validate">
 				                    <label for="email" style="font-size:14px">Email</label>
 				                  </div>
 				                </div>
-				                <a class="waves-effect waves-light btn">Save</a>
+				                <button type="submit" class="waves-effect waves-light teal accent-4 btn">Save</button>
 				              </form>
 				            </div>
 				        </div>
@@ -94,40 +94,79 @@
 				          <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
 				            <div class="row">
 				              <div class="col s1"></div>
-				              <form class="col s10">
+				              <form class="col s10" ng-submit="updateWork('{{work.workId}}')">
 				                <div class="row">
 				                  <div class="input-field col s10" >
-				                    <input id="Organization" type="text" class="validate">
+				                    <input id="Organization" ng-model="editedWork.organization" type="text" class="validate">
 				                    <label for="Organization" style="font-size:14px">Organization</label>
 				                  </div>
 				                  <div class="input-field col s10">
-				                    <input id="Designation" type="text" class="validate">
+				                    <input id="Designation" ng-model="editedWork.designation" type="text" class="validate">
 				                    <label for="Designation" style="font-size:14px">Designation</label>
 				                  </div>
 				                </div>
 				                <div class="row">
 				                  <div class="input-field col s5">
-				                    <input type="date" class="datepicker">
+				                    <input type="date" ng-model="editedWork.startDate" class="datepicker">
 				                    <label for="Duration" style="font-size:14px">From</label>
 				                  </div>
 				                  <div class="input-field col s5">
-				                    <input type="date" class="datepicker">
+				                    <input type="date" ng-model="editedWork.endDate" class="datepicker">
 				                    <label for="Duration" style="font-size:14px">To</label>
 				                  </div>
 				                </div>
 				                <div class="row">
 				                  <div class="input-field col s10">
-				                    <textarea id="Description" class="materialize-textarea" length="120"></textarea>
+				                    <textarea id="Description" ng-model="editedWork.description" class="materialize-textarea" length="120"></textarea>
 				                    <label for="Description" style="font-size:14px">Description</label>
 				                  </div>
 				                </div>
-				                <a class="waves-effect waves-light btn">Save</a>
+				                <button type="submit" class="waves-effect waves-light teal accent-4 btn">Save</button>
 				              </form>
 				            </div>
 				        </div>
 				    </div>
+				    
+			    	<div class="card" ng-show="addingWork">
+			    		<div class="card-content">
+			    			<div class="row">
+			    				<div class="col s1"></div>
+				    			<form class="col s10" ng-submit="addWork()">
+					                <div class="row">
+					                  <div class="input-field col s10" >
+					                    <input id="Organization" ng-model="newWork.organization" type="text" class="validate">
+					                    <label for="Organization" style="font-size:14px">Organization</label>
+					                  </div>
+					                  <div class="input-field col s10">
+					                    <input id="Designation" ng-model="newWork.designation" type="text" class="validate">
+					                    <label for="Designation" style="font-size:14px">Designation</label>
+					                  </div>
+					                </div>
+					                <div class="row">
+					                  <div class="input-field col s5">
+					                    <input type="date" ng-model="newWork.startDate" class="datepicker">
+					                    <label for="Duration" style="font-size:14px">From</label>
+					                  </div>
+					                  <div class="input-field col s5">
+					                    <input type="date" ng-model="newWork.endDate" class="datepicker">
+					                    <label for="Duration" style="font-size:14px">To</label>
+					                  </div>
+					                </div>
+					                <div class="row">
+					                  <div class="input-field col s10">
+					                    <textarea id="Description" ng-model="newWork.description" class="materialize-textarea" length="120"></textarea>
+					                    <label for="Description" style="font-size:14px">Description</label>
+					                  </div>
+					                </div>
+					                <button type="submit" class="waves-effect waves-light teal accent-4 btn">Add</button>
+					                <button type="button" class="waves-effect waves-light red accent-4 btn" ng-click="cancelAdding()">Cancel</button>
+					            </form>	
+			    			</div>
+			    			
+			    		</div>
+			    	</div>
 				    <div class="center-align" ng-show="editable">
-				    	<button class="waves-effect waves-dark teal accent-4 btn-large add-button"><i ng-show='editable' class="material-icons right-align">add</i></button>	
+				    	<button class="waves-effect waves-dark teal accent-4 btn-large add-button" ng-click="enableAddingWork()" ng-hide="addingWork"><i ng-show='editable' class="material-icons right-align">add</i></button>
 				    </div>
 			    </div>
 		    </div>
@@ -187,13 +226,51 @@
 				                    <label for="Description" style="font-size:14px">Description</label>
 				                  </div>
 				                </div>
-				                <a class="waves-effect waves-light btn">Save</a>
+				                <button type="submit" class="waves-effect waves-light teal accent-4 btn">Save</button>
 				              </form>
 				            </div>
 				        </div>
 				    </div>
+				    
+				    <div class="card" ng-show="addingEducation">
+				    	<div class="card-content">
+				    		<div class="row">
+				              <div class="col s1"></div>
+				              <form class="col s10" ng-submit="addEducation()">
+				                <div class="row">
+				                  <div class="input-field col s10" >
+				                    <input id="Institute" ng-model="newEducation.institute" type="text" class="validate">
+				                    <label for="Institute" style="font-size:14px">Institute</label>
+				                  </div>
+				                  <div class="input-field col s10">
+				                    <input id="Degree" type="text" ng-model="newEducation.degree" class="validate">
+				                    <label for="Degree" style="font-size:14px">Degree</label>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="input-field col s5">
+				                    <input type="date" ng-model="newEducation.startDate" class="datepicker">
+				                    <label for="Duration" style="font-size:14px">From</label>
+				                  </div>
+				                  <div class="input-field col s5">
+				                    <input type="date" ng-model="newEducation.endDate" class="datepicker">
+				                    <label for="Duration" style="font-size:14px">To</label>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="input-field col s10">
+				                    <textarea id="Description" ng-model="newEducation.description" class="materialize-textarea" length="120"></textarea>
+				                    <label for="Description" style="font-size:14px">Description</label>
+				                  </div>
+				                </div>
+				                <button type="submit" class="waves-effect waves-light teal accent-4 btn">Add</button>
+				                <button type="button" class="waves-effect waves-light red accent-4 btn" ng-click="cancelAdding()">Cancel</button>
+				              </form>
+				            </div>
+				    	</div>
+				    </div>
 				    <div class="center-align" ng-show="editable">
-				    	<button class="waves-effect waves-dark teal accent-4 btn-large add-button"><i ng-show='editable' class="material-icons right-align">add</i></button>	
+				    	<button class="waves-effect waves-dark teal accent-4 btn-large add-button" ng-click="enableAddingEducation()" ng-hide="addingEducation"><i ng-show='editable' class="material-icons right-align">add</i></button>	
 				    </div>
 			    </div>
 		    </div>

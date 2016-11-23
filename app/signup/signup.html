@@ -10,7 +10,31 @@
 			<input id="password" type="text" ng-model="newUser.password" class="validate">
 			<label for="password">Password</label>
 		</div>
+		<div class="input-field">
+			<i class="small material-icons prefix">account_circle</i>
+			<input id="firstName" type="text" ng-model="newUser.firstName" class="validate">
+			<label for="firstName">First Name</label>
+		</div>
+		<div class="input-field">
+			<i class="small material-icons prefix">vpn_key</i>
+			<input id="lastName" type="text" ng-model="newUser.lastName" class="validate">
+			<label for="lastName">Last Name</label>
+		</div><div class="input-field">
+			<i class="small material-icons prefix">account_circle</i>
+			<input id="email" type="email" ng-model="newUser.email" class="validate">
+			<label for="email">Email</label>
+		</div>
+		<div class="input-field">
+			<i class="small material-icons prefix">vpn_key</i>
+			<input id="currentOrganization" type="text" ng-model="newUser.currentOrganization" class="validate">
+			<label for="currentOrganization">Current Organization</label>
+		</div>
+		<div class="input-field">
+			<i class="small material-icons prefix">vpn_key</i>
+			<input id="currentDesignation" type="text" ng-model="newUser.currentDesignation" class="validate">
+			<label for="currentDesignation">Current Designation</label>
+		</div>
 		<br>
-		<div class="center-align"><a class="waves-effect waves-light btn-large" ng-click="createUser()">Submit</a></div>
+		<div class="center-align"><a class="waves-effect waves-light teal accent-4 btn-large" ng-click="createUser()">Submit</a></div>
 	</div>
 </div>

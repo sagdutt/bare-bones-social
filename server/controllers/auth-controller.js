@@ -4,6 +4,9 @@ var User = require('../datasets/users');
 //function to signup a new user
 module.exports.signup =  function (req, res) {
 	var user_init = req.body;
+	console.log(req.body);
+	user_init.requestsSent = [];
+	user_init.requestsReceived = [];
 	user_init.connections = [];
 	var user = new User(user_init);
 	//add new user to database
