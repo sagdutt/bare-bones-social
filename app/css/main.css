@@ -1,0 +1,27 @@
+nav{
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+#logo{
+	border-radius: 50%;
+	background-color: #fff;
+	margin-top: 5px;
+	height: 50px;
+	width: 50px;
+}
+.feed{
+	margin-top: 20px;
+}
+.posts{
+	margin-top: 40px;
+}
+.signup{
+	margin-top: 100px;
+}
+textarea{
+	resize: vertical;
+	height: 100px;
+	width: 100%;
+	border-color: #4dd0e1;
+	border-width: 1px;
+}

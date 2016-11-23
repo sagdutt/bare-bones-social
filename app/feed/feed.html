@@ -1,0 +1,16 @@
+<div class="container feed" ng-show="loggedIn">
+	<textarea ng-model='newPost.text' placeholder="What's up, {{username}}?" class="flow-text z-depth-1"></textarea>
+	<div class="right-align"><a class="waves-effect waves-light btn" ng-click="makePost()">Post</a></div>
+	<div class="posts">
+		<div class="card hoverable" ng-repeat="post in posts | orderBy: '-created_on' ">
+	        <div class="card-content">
+				<a class="card-title" ui-sref="user({id: '{{post.user_id}}' })">{{post.user}}</a>
+				<p><small>{{post.created_on|date}}</small></p>
+	            <p class="flow-text">{{post.text}}</p>
+	        </div>
+		</div>
+	</div>
+</div>
+<div class="error" ng-hide="loggedIn">
+	<h1>Please login</h1>
+</div>

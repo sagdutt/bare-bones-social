@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="Social">
+	<head>
+		<meta charset="UTF-8">
+		<title>Bare-Bones</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="app/css/main.css"/>
+		<script src="node_modules/angular/angular.js"></script>
+	</head>
+	
+	<div class="navbar-fixed">
+		<nav class="cyan darken-2" ng-controller="NavigationController">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo"><img id="logo" src="app/images/Doubleflat.svg"/></a>
+				<form class="right" ng-submit="loginUser()" ng-hide="loggedIn">
+					<div class="input-field inline">
+						<i class="small material-icons prefix">account_circle</i>
+						<input type="text" ng-model="login.username" placeholder="Username">
+					</div>
+					<div class="input-field inline">
+						<i class="small material-icons prefix">vpn_key</i>
+						<input type="password" ng-model="login.password" placeholder="Password">
+					</div>
+					<button type="submit" class="waves-effect waves-light btn">Login</button>
+				</form>
+				<ul class="right" ng-hide="loggedIn">
+					<li><a ui-sref="signUp">Create An Account</a></li>
+				</ul>					
+				<ul class="right" ng-show="loggedIn">
+					<li><a href="#/feed">Feed</a></li>
+					<li><a href="#/user/{{id}}">Profile</a></li>
+					<li><a class="waves-effect waves-light btn" ng-click="logoutUser()">Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<body>
+		<div ui-view></div>	
+	</body>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/signup/signup-controller.js"></script>
+	<script src="app/navigation/navigation-controller.js"></script>
+	<script src="app/feed/feed-controller.js"></script>
+	<script src="app/user/user-controller.js"></script>
+</html>
