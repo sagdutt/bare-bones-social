@@ -26,6 +26,11 @@
 								        </dl>
 								        <p>{{userDetails.email}}</p>
 								    </div>
+								    <button ng-hide="notConnectable" ng-click="sendRequest()" class="waves-effect waves-light teal accent-4 btn">Connect</button>
+								    <button ng-show="requestSent" ng-click=cancelRequest() class="waves-effect waves-light red accent-4 btn">Cancel Request</button>
+								    <button ng-show="requested" ng-click=acceptRequest() class="waves-effect waves-light teal accent-4 btn">Accept Request</button>
+								    <button ng-show="requested" ng-click=rejectRequest() class="waves-effect waves-light red accent-4 btn">Reject Request</button>
+								    <button ng-show="isConnection" ng-click="removeConnection()" class="waves-effect waves-light red accent-4 btn">Remove</button>
 							    </div>
 						    </div>
 					    </div>
@@ -94,7 +99,7 @@
 				          <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
 				            <div class="row">
 				              <div class="col s1"></div>
-				              <form class="col s10" ng-submit="updateWork('{{work._id}}')">
+				              <form class="col s10" ng-submit="updateWork(work._id)">
 				                <div class="row">
 				                  <div class="input-field col s10" >
 				                    <input id="Organization" ng-model="editedWork.organization" type="text" class="validate">
@@ -199,30 +204,28 @@
 				          <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
 				            <div class="row">
 				              <div class="col s1"></div>
-				              <form class="col s10">
+				              <form class="col s10" ng-submit="updateEducation(education._id)">
 				                <div class="row">
 				                  <div class="input-field col s10" >
-				                    <input id="Institute" type="text" class="validate">
+				                    <input id="Institute" ng-model="editedEducation.institute" type="text" value="education.institute" class="validate">
 				                    <label for="Institute" style="font-size:14px">Institute</label>
 				                  </div>
 				                  <div class="input-field col s10">
-				                    <input id="Degree" type="text" class="validate">
+				                    <input id="Degree" ng-model="editedEducation.degree" type="text" value="education.degree" class="validate">
 				                    <label for="Degree" style="font-size:14px">Degree</label>
 				                  </div>
 				                </div>
 				                <div class="row">
 				                  <div class="input-field col s5">
-				                    <input type="date" class="datepicker">
-				                    <label for="Duration" style="font-size:14px">From</label>
+				                    <input type="date" ng-model="editedEducation.startDate" value="education.startDate|date">
 				                  </div>
 				                  <div class="input-field col s5">
-				                    <input type="date" class="datepicker">
-				                    <label for="Duration" style="font-size:14px">To</label>
+				                    <input type="date" ng-model="editedEducation.endDate" value="education.endDate|date">
 				                  </div>
 				                </div>
 				                <div class="row">
 				                  <div class="input-field col s10">
-				                    <textarea id="Description" class="materialize-textarea" length="120"></textarea>
+				                    <textarea id="Description" ng-model="editedEducation.description" value="education.description" class="materialize-textarea" length="120"></textarea>
 				                    <label for="Description" style="font-size:14px">Description</label>
 				                  </div>
 				                </div>

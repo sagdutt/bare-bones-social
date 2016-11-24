@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col s6">
+		<ul class="collection with-header">
+		    <li class="collection-header teal white-text"><h4>Received</h4></li>
+		    <li class="collection-item" ng-repeat="request in received">
+		    	<div class="row">
+		    			<span class="col s8"><a class="flow-text" ui-sref="user({id: '{{request._id}}' })">{{request.firstName}} {{request.lastName}}</a> </span>
+		    			<span class="col s2"><button ng-click="acceptRequest(request._id)" class="secondary-content waves-effect waves-light teal accent-4 btn"><i class="material-icons">done</i></button></span>
+		    			<span class="col s2"><button ng-click="rejectRequest(request._id)" class="secondary-content waves-effect waves-light red accent-4 btn"><i class="material-icons">close</i></button></span>
+		    	</div>
+		    </li>
+		</ul>	
+	</div>
+	<div class="col s6">
+		<ul class="collection with-header">
+		    <li class="collection-header teal white-text"><h4>Sent</h4></li>
+		    <li class="collection-item" ng-repeat="request in sent">
+		    	<div class="row">
+		    			<span class="col s8"><a class="flow-text" ui-sref="user({id: '{{request._id}}' })">{{request.firstName}} {{request.lastName}}</a> </span>
+		    			<span class="col s4"><button ng-click="cancelRequest(request._id)" class="secondary-content waves-effect waves-light red accent-4 btn"><i class="material-icons">close</i></button></span>
+		    	</div>
+		    </li>
+		</ul>	
+	</div>
+</div>
+<div class="row">
+	<div class="col s6 offset-s3">
+		<ul class="collection with-header">
+		    <li class="collection-header teal white-text"><h4>Connections</h4></li>
+		    <li class="collection-item" ng-repeat="request in conn">
+		    	<div class="row">
+		    			<span class="col s8"><a class="flow-text" ui-sref="user({id: '{{request._id}}' })">{{request.firstName}} {{request.lastName}}</a> </span>
+		    			<span class="col s4"><button ng-click="removeConnection(request._id)" class="secondary-content waves-effect waves-light red accent-4 btn"><i class="material-icons">close</i></button></span>
+		    	</div>
+		    </li>
+		</ul>	
+	</div>
+</div>

@@ -14,13 +14,12 @@ module.exports.signup =  function (req, res) {
 
 	setTimeout(function(){
 		//query newly created user to retrieve the unique user id
-		User.findOne({'username': req.body.username, 'password': req.body.password}, '_id username', function(err, result){
+		User.findOne({'username': req.body.username, 'password': req.body.password}, '_id username connections requestsSent requestsReceived', function(err, result){
 			if(err){
 				console.log("Error loging in");
 			}
 			if(result){
-				res.json({username: req.body.username,
-						_id: result._id});
+				res.json(result);
 			}
 		});
 	}, 10);
@@ -29,13 +28,12 @@ module.exports.signup =  function (req, res) {
 //function to login existing user
 module.exports.login = function(req, res){
 	//check to see if user and password combination exists
-	User.findOne({'username': req.body.username, 'password': req.body.password}, '_id username', function(err, result){
+	User.findOne({'username': req.body.username, 'password': req.body.password}, '_id username connections requestsSent requestsReceived', function(err, result){
 		if(err){
 			console.log("Error loging in");
 		}
 		if(result){
-			res.json({username: req.body.username,
-					_id: result._id});
+			res.json(result);
 		}
 	});
 }

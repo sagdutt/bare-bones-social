@@ -24,4 +24,9 @@ angular.module('Social',['ui.router'])
 				templateUrl: "app/user/user.html",
 				controller: "UserController"
 			})
+			.state('connections',{
+				url: "/connections",
+				templateUrl: "app/connections/connections.html",
+				controller: "ConnectionsController"
+			})
 	});

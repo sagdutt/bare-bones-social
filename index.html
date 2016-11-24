@@ -30,6 +30,7 @@
 					<li><a ui-sref="signUp">Create An Account</a></li>
 				</ul>					
 				<ul class="right" ng-show="loggedIn">
+					<li><a href="#/connections">Connections</a></li>
 					<li><a href="#/feed">Feed</a></li>
 					<li><a href="#/user/{{id}}">Profile</a></li>
 					<li><a class="waves-effect waves-light btn" ng-click="logoutUser()">Logout</a></li>
@@ -47,4 +48,5 @@
 	<script src="app/navigation/navigation-controller.js"></script>
 	<script src="app/feed/feed-controller.js"></script>
 	<script src="app/user/user-controller.js"></script>
+	<script src="app/connections/connections-controller.js"></script>
 </html>
