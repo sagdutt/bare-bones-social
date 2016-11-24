@@ -35,7 +35,7 @@ module.exports.addWorkDetails =  function (req, res) {
 				console.log("Error loging in");
 			}
 			if(result){
-				work.workId = result._id;
+				work._id = result._id;
 				res.json(work);
 			}
 		});
